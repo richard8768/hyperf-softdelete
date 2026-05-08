@@ -14,6 +14,13 @@ definition of the field `deleted_at`
 `deleted_at` int NOT NULL DEFAULT '0'
 ```
 
+## install
+
+
+```bash
+composer require richard8768/hyperf-softdelete
+```
+
 ## Useage
 
 ```
