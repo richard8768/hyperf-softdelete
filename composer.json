@@ -1,0 +1,49 @@
+{
+  "name": "richard8768/hyperf-softdelete",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "hyperf",
+    "softdelete",
+    "custorm"
+  ],
+  "description": "Hyperf softdelete",
+  "authors": [
+    {
+      "name": "richard8768",
+      "email": "444626008@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "hyperf/database": "^3.1",
+    "nesbot/carbon": "^2.0",
+    "psr/container": "^1.0 || ^2.0",
+    "psr/event-dispatcher": "^1.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.94",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^10.5",
+    "swoole/ide-helper": "dev-master",
+    "symfony/var-dumper": "^6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Richard\\HyperfSoftdelete\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "test": "co-phpunit --prepend tests/bootstrap.php -c phpunit.xml --colors=always",
+    "analyse": "phpstan analyse --memory-limit 512M -l 0 ./src",
+    "analyse-types": "phpstan analyze --configuration=\"phpstan.types.neon.dist\" --memory-limit 512M -l 0 ./src",
+    "cs-fix": "php-cs-fixer fix $1 --verbose"
+  }
+}
