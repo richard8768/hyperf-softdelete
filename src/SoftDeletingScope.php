@@ -38,7 +38,7 @@ class SoftDeletingScope  extends HyperfSoftDeletingScope
             $column = $this->getDeletedAtColumn($builder);
 
             return $builder->update([
-                $column => $builder->getModel()->freshTimestamp()->timestamp,
+                $column => $this->getFinalTimestamp($builder),
             ]);
         });
     }
@@ -84,5 +84,10 @@ class SoftDeletingScope  extends HyperfSoftDeletingScope
 
             return $builder;
         });
+    }
+
+    protected function getFinalTimestamp(Builder $builder)
+    {
+        return $builder->getModel()->getFinalTimestamp($builder->getModel()->freshTimestamp());
     }
 }

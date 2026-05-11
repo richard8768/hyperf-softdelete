@@ -80,6 +80,33 @@ trait SoftDeletes
         return defined('static::UN_DELETED_VALUE') ? static::UN_DELETED_VALUE : 0;
     }
 
+    public function getTimestampType(): string
+    {
+        //only support seconds milliseconds nanoseconds
+        $supportTimestampTypes = ['seconds', 'milliseconds', 'nanoseconds'];
+        $timestampType = defined('static::TIMESTAMP_TYPE') ? static::TIMESTAMP_TYPE : 'seconds';
+        (!in_array(strtolower($timestampType), $supportTimestampTypes)) && $timestampType = 'seconds';
+        return $timestampType;
+    }
+
+    public function getNanoseconds(): int
+    {
+        return hrtime(true);
+    }
+
+    public function getFinalTimestamp(mixed $time): int
+    {
+        $timestampType = $this->getTimestampType();
+        (empty($time)) && $time = $this->freshTimestamp();
+        if ($timestampType == 'seconds') {
+            return $time->timestamp;
+        } elseif ($timestampType == 'milliseconds') {
+            return $time->getTimestampMs();
+        } else {
+            return $this->getNanoseconds();
+        }
+    }
+
     /**
      * Perform the actual delete query on this model instance.
      */
@@ -89,9 +116,11 @@ trait SoftDeletes
 
         $time = $this->freshTimestamp();
 
-        $columns = [$this->getDeletedAtColumn() => $time->timestamp];
+        $realTimestamps = $this->getFinalTimestamp($time);
 
-        $this->{$this->getDeletedAtColumn()} = $time->timestamp;
+        $columns = [$this->getDeletedAtColumn() => $realTimestamps];
+
+        $this->{$this->getDeletedAtColumn()} = $realTimestamps;
 
         if ($this->timestamps && !is_null($this->getUpdatedAtColumn())) {
             $this->{$this->getUpdatedAtColumn()} = $time;

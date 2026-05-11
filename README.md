@@ -9,6 +9,7 @@ Hyperf Soft Delete Extension: Custom Soft Delete Fields and Deletion Values for 
 ```
 const DELETED_AT = 'deleted_at';//Soft Delete Fields,the default value is deleted_at
 const UN_DELETED_VALUE = 0;//undeleted value for the soft delete field,the default value is 0
+const TIMESTAMP_TYPE = 'seconds';//only support seconds milliseconds nanoseconds,nanoseconds achieves functionality through hrtime (true)
 
 definition of the field `deleted_at`
 `deleted_at` int NOT NULL DEFAULT '0'
