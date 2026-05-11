@@ -12,7 +12,8 @@ const UN_DELETED_VALUE = 0;//undeleted value for the soft delete field,the defau
 const TIMESTAMP_TYPE = 'seconds';//only support seconds milliseconds nanoseconds,nanoseconds achieves functionality through hrtime (true)
 
 definition of the field `deleted_at`
-`deleted_at` int NOT NULL DEFAULT '0'
+`deleted_at` int NOT NULL DEFAULT '0' //only support seconds
+`deleted_at` bigint NOT NULL DEFAULT '0'//support seconds milliseconds nanoseconds
 ```
 
 ## install
