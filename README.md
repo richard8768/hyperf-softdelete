@@ -44,6 +44,9 @@ use Richard\HyperfSoftdelete\SoftDeletes;
 class MemberAddress extends Model
 {
     use SoftDeletes;
+    
+    //const TIMESTAMP_TYPE = 'milliseconds'; //to use milliseconds
+    //const TIMESTAMP_TYPE = 'nanoseconds'; //to use nanoseconds
 
     /**
      * The table associated with the model.
