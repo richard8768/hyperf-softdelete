@@ -34,7 +34,7 @@ declare (strict_types=1);
 
 namespace App\Model;
 
-use Richard\HyperfSoftdelete\SoftDeletes;
+use Richard\HyperfSoftdelete\SoftDeletes;//import file
 
 /**
  * @property int $id
@@ -44,7 +44,7 @@ use Richard\HyperfSoftdelete\SoftDeletes;
  */
 class MemberAddress extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes;//use import file
     
     //const TIMESTAMP_TYPE = 'milliseconds'; //to use milliseconds
     //const TIMESTAMP_TYPE = 'nanoseconds'; //to use nanoseconds
