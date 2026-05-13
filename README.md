@@ -1,6 +1,7 @@
 # richard8768/hyperf-softdelete
 
 Hyperf Soft Delete Extension: Custom Soft Delete Fields and Deletion Values for Hyperf
+Facilitates the creation of a unique composite index containing deleted_at.
 
 > QQ:444626008
 
