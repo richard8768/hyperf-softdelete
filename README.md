@@ -59,4 +59,17 @@ class MemberAddress extends Model
 
 
 }
+
+//Delete data
+MemberAddress::where('member_id', 1)->where('id', 11)->delete();
+//Restore deleted data
+MemberAddress::withTrashed()->where('member_id', 1)->restore();
+//Force permanently delete deleted data
+MemberAddress::onlyTrashed()->where('member_id', 1)->forceDelete();
+//Force delete data directly
+MemberAddress::where('member_id', 1)->forceDelete();
+//Query includes deleted data
+$listAddress = MemberAddress::withTrashed()->where('member_id', 1)->select()->get();
+//Query deleted data
+$listAddress = MemberAddress::onlyTrashed()->where('member_id', 1)->select()->get();
 ```
