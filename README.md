@@ -1,7 +1,7 @@
 # richard8768/hyperf-softdelete
 
 Hyperf Soft Delete Extension: Custom Soft Delete Fields and Deletion Values for Hyperf
-Facilitates the creation of a unique composite index containing deleted_at.
+Facilitates the creation of a unique composite index containing Soft Delete Fields.
 
 Hyperf 软删除扩展：为 Hyperf 自定义软删除字段及删除标识值
 便于创建包含软删除字段的唯一复合索引
